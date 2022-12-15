@@ -1,23 +1,21 @@
 #include "monty.h"
 
 /**
- * f_pall - prints the stack
- * @head: stack head
- * @counter: no used
+ * _pall - print all function
+ * @stack: pointer to linked list stack
+ * @line_number: number of line opcode occurs on
  *
- * Return: no return
+ * Return: Nothing
  */
-void f_pall(stack_t **head, unsigned int counter)
-{
-	stack_t *h;
-	(void)counter;
 
-	h = *head;
-	if (h == NULL)
-		return;
-	while (h)
+void _pall(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+{
+	stack_t *runner;
+
+	runner = *stack;
+	while (runner != NULL)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
+		printf("%d\n", runner->n);
+		runner = runner->next;
 	}
 }

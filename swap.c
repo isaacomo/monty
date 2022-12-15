@@ -1,34 +1,25 @@
 #include "monty.h"
 
 /**
- * f_swap - adds the top two elements of the stack.
- * @head: stack head
- * @counter: line_number
+ * _swap - swap top of stack y second top stack
+ * @stack: pointer to lists for monty stack
+ * @line_number: number of line opcode occurs on
  *
- * Return: no return
+ * Return: Nothing
  */
 
-void f_swap(stack_t **head, unsigned int counter)
+void _swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *h;
-	int len = 0, aux;
+	stack_t *runner;
+	int tmp;
 
-	h = *head;
-	while (h)
+	runner = *stack;
+	if (runner == NULL || runner->next == NULL)
 	{
-		h = h->next;
-		len++;
-	}
-	if (len < 2)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", counter);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*head);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	aux = h->n;
-	h->n = h->next->n;
-	h->next->n = aux;
+	tmp = runner->n;
+	runner->n = runner->next->n;
+	runner->next->n = tmp;
 }
